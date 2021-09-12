@@ -1,7 +1,7 @@
 import Categories from './Categories';
-import Fruits from './Fruits';
+import Products from './Products';
 
 export {
   Categories,
-    Fruits
+    Products
 };

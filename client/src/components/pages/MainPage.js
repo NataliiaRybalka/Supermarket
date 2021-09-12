@@ -4,7 +4,7 @@ import './MainPage.css';
 
 import { RouterLoginRegistr } from '../account';
 import { Header, Footer } from '../header-footer';
-import { Categories, Fruits } from '../products';
+import { Categories, Products } from '../products';
 import { Payment, Delivery, Contacts, Rules } from "../pages";
 import { MainContext } from '../../context';
 
@@ -12,28 +12,28 @@ export default function MainPage() {
   const { categories } = useContext(MainContext);
 
   return (
-    <div>
-      <Router>
-        <Header />
+      <div>
+        <Router>
+          <Header />
 
-        <main>
-          <Switch>
-            <Route path={'/login'}> <RouterLoginRegistr /> </Route>
-            {categories.map(category => (
-              <Route path={`/${category.nameEnglish}`} key={category._id}> {category.name} </Route>
-            ))}
+          <main>
+            <Switch>
+              <Route path={'/login'}> <RouterLoginRegistr /> </Route>
+              {categories.map(category => (
+                  <Route path={`/${category.nameEnglish}`} key={category._id}> {category.name} </Route>
+              ))}
 
-            <Route path={'/payment'}> <Payment/> </Route>
-            <Route path={'/delivery'}> <Delivery/> </Route>
-            <Route path={'/contacts'}> <Contacts/> </Route>
-            <Route path={'/rules'}> <Rules/> </Route>
-            <Route path={'/fruits'}> <Fruits/> </Route>
-            <Route path={'/'}> <Categories /> </Route>
-          </Switch>
-        </main>
-        
-        <Footer />
-      </Router>
-    </div>
+              <Route path={'/payment'}> <Payment/> </Route>
+              <Route path={'/delivery'}> <Delivery/> </Route>
+              <Route path={'/contacts'}> <Contacts/> </Route>
+              <Route path={'/rules'}> <Rules/> </Route>
+              <Route path={'/fruits'}> <Products/> </Route>
+              <Route path={'/'}> <Categories /> </Route>
+            </Switch>
+          </main>
+
+          <Footer />
+        </Router>
+      </div>
   )
 }

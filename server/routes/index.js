@@ -2,5 +2,5 @@ module.exports = {
   categoriesRouter: require('./categories.router'),
   loginRouter: require('./login.router'),
   registrationRouter: require('./registration.router'),
-  fruitsRouter: require('./fruits.router')
+  productsRouter: require('./products.router')
 };

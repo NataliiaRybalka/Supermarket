@@ -16,7 +16,7 @@ export default function MainContextProvider({children}) {
   }
 
   const getAllProducts = async () => {
-    const data = await request('http://localhost:5000/products');
+    const data = await request('http://localhost:5000/fruits');
 
     setProducts(data);
   }

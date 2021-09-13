@@ -7,7 +7,7 @@ export default function MainContextProvider({children}) {
   const { request } = httpRequest();
 
   const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [fruits, setFruits] = useState([]);
 
   const getAllCategories = async () => {
     const data = await request('http://localhost:5000/categories');
@@ -15,18 +15,18 @@ export default function MainContextProvider({children}) {
     setCategories(data);
   }
 
-  const getAllProducts = async () => {
+  const getAllFruits = async () => {
     const data = await request('http://localhost:5000/fruits');
 
-    setProducts(data);
+    setFruits(data);
   }
 
   return (
     <MainContext.Provider value={{
       categories,
       getAllCategories,
-      products,
-      getAllProducts
+      fruits,
+      getAllFruits
     }}>
       {children}
     </MainContext.Provider>

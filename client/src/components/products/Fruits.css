@@ -1,0 +1,12 @@
+#fruits {
+    display: flex;
+    justify-content: space-around;
+}
+.oneFruits {
+    width: 32%;
+}
+.fruitsName, a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}

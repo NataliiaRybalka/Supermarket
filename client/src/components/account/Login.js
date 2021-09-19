@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import './Account.css';
 
-import { httpRequest } from '../../helpers';
+import { UserContext } from '../../context';
 
 export default function Login() {
-  const { request } = httpRequest();
-
   const [logUserData, setLogUserData] = useState({
     email: '',
     password: ''
   });
 
-  const [user, setUser] = useState();
+  const {user, userRequest} = useContext(UserContext);
 
   const updateUserData = (e) => {
     const {target: {name, value} } = e;
@@ -18,27 +18,36 @@ export default function Login() {
     setLogUserData({...logUserData, [name]: value });
   };
 
-  const login = async () => {
-    const data = await request('http://localhost:5000/login', 'POST', { logUserData });
+  const login = () => {
+    userRequest('login', 'POST', logUserData);
 
     setLogUserData({
       email: '',
       password: ''
     });
-
-    setUser(data);
   };
 
   return (
     <div>
       <h2>Вхід</h2>
-      <input value={logUserData.email} onChange={updateUserData} type="text" name="email" placeholder="емайл" />
-      <br />
-      <input value={logUserData.password} onChange={updateUserData} type="password" name="password" placeholder="пароль" />
-      <br />
-      <br />
-      <button onClick={login}>увійти</button>
-      <br />
+
+      <div className={'accForm'}>
+        <div>
+          <label>Email</label>
+          <input value={logUserData.email} onChange={updateUserData} type="text" name="email" />
+        </div>
+        <div>
+          <label>Пароль</label>
+          <input value={logUserData.password} onChange={updateUserData} type="password" name="password" />
+        </div>
+        
+        <br />
+        <button onClick={login}>увійти</button>
+        <br />
+        <Link to="/registration" className={'regOrLogBtn'}>зареєструватись</Link> 
+      </div>
+      
+      {user && <Redirect to={`/account/${user._id}`} />}
     </div>
   )
 }

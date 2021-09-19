@@ -1,19 +1,50 @@
 header, footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 50px;
+  background: rgb(34, 84, 84);
+  height: 100px;
+  color: white
 }
-#menuButton {
+
+header > span, footer span {
+  margin-right: 50px;
+}
+
+#menuButton, #exit {
   background: transparent;
   border: none;
+  color: black;
   cursor: pointer;
   font-size: 17px;
 }
+
 .headerLink {
   text-decoration: none;
   color: black;
 }
+
+.rightHeaderBlock {
+  display: flex;
+  align-items: center;
+}
 #mainTitle {
-  margin-left: -50%;
+  margin-left: -40%;
+  font-size: 45px;
 }
 #cart {
   margin-left: 10px;
+}
+#userBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  background: gray;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

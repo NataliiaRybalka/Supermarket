@@ -1,21 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './MainPage.css';
 
-import { RouterLoginRegistr } from '../account';
+import { Account, Login, Registration } from '../account';
 import { Header, Footer } from '../header-footer';
+<<<<<<< HEAD
 import { Categories, Fruits } from '../products';
+=======
+import { Categories, ProductPage, ProductsList } from '../products';
+>>>>>>> master
 import { Payment, Delivery, Contacts, Rules } from "../pages";
-import { MainContext } from '../../context';
 
 export default function MainPage() {
-  const { categories } = useContext(MainContext);
-
   return (
       <div>
         <Router>
           <Header />
 
+<<<<<<< HEAD
           <main>
             <Switch>
               <Route path={'/login'}> <RouterLoginRegistr /> </Route>
@@ -35,5 +37,25 @@ export default function MainPage() {
           <Footer />
         </Router>
       </div>
+=======
+        <main>
+          <Switch>
+            <Route path={'/account/:id'}> <Account /> </Route>
+            <Route path={'/login'}> <Login /> </Route>
+            <Route path={'/registration'}> <Registration /> </Route>
+            <Route path={'/payment'}> <Payment/> </Route>
+            <Route path={'/delivery'}> <Delivery/> </Route>
+            <Route path={'/contacts'}> <Contacts/> </Route>
+            <Route path={'/rules'}> <Rules/> </Route>
+            <Route path={'/:categoryName/:productName'}> <ProductPage /> </Route>
+            <Route path={'/:categoryName'}> <ProductsList /> </Route>
+            <Route path={'/'}> <Categories /> </Route>
+          </Switch>
+        </main>
+        
+        <Footer />
+      </Router>
+    </div>
+>>>>>>> master
   )
 }
